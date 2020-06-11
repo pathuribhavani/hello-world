@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+       tools{
+	 maven 'M2_HOME'
+	 jdk 'JAVA_HOME'
+             }
+    stages{
+	stage('Initialize'){
+	 steps{
+           sh '''
+             echo "PATH=${PATH}"
+	     echo "M2_HOME = ${M2_HOME}
+              }
+         }
+
+        stage('Checkout') {
+            steps{
+            git credentialsId: 'bhavani', url: 'https://github.com/pathuribhavani/hello-world'
+            }
+        }
+            stage('Build'){
+                steps{
+		sh 'mvn -version'
+                sh 'mvn clean install'
+                }
+            }
+    }
+
+}
+
