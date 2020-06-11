@@ -41,19 +41,7 @@ pipeline{
 		  steps {
                      sh 'docker build' -t pathuribhavani/hello-world:latest .'
                  }
-            }
-
-//	     stage ('Push'){
- //          steps{
-//              sh 'chmod +x image_push.sh'
-//                sh 'docker build' -t pathuribhavani/hello-world:project .'
-//                sh 'docker push bhavanipathuri/$IMAGE:project'
-//                sh './image_push.sh'
-//                sh 'docker-compose up -d'
-	     
-                          
-//    }
-//}
+        }
 
 }
 
