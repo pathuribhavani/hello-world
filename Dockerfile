@@ -1,7 +1,18 @@
 # Pull base image 
-From tomcat:8-jre8 
+From ubuntu:latest
 
 # Maintainer 
-MAINTAINER "valaxytech@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
-RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+MAINTAINER "bhavanipathuri" 
+
+WORkDIR .
+
+RUN mkdir -p /store
+
+
+#put jar into container
+
+ADD .  app/app.war
+
+
+#run jar
+CMD  [/app.war"]
