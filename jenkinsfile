@@ -36,15 +36,9 @@ pipeline{
                 sh 'git push origin HEAD:master'
 		}
             }
-	     stage('Docker Build'){
-                 agent any
-		  steps {
-                     sh 'docker build' -t pathuribhavani/hello-world:latest .'
-                 }
-        }
+	     
 
 }
 
 }
 
-}
