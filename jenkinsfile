@@ -1,44 +1,40 @@
 pipeline{
     agent any
-	environment {
+    tools{
     registry = "https://hub.docker.com/repository/docker/bhavanipathuri/webfile"
     registryCredential = ‘dockerhub’
-}
-	   
-       tools{
-	 maven 'M2_HOME'
-	 jdk 'JAVA_HOME'
-             }
-    stages{
-	stage('Initialize'){
-	 steps{
-           sh '''
-             echo "PATH=${PATH}"
-	     echo "M2_HOME = ${M2_HOME}"
-            '''
-              }
-         }
+    }
 
-        stage('Checkout') {
+    tools{
+        maven 'M2_HOME'
+        jdk 'JAVA_HOME'
+        }
+        stages{
+            stage('Initialize'){
             steps{
-            git credentialsId: 'bhavani', url: 'https://github.com/pathuribhavani/hello-world'
-        
+                sh '''
+                echo "PATH=${PATH}"
+                echo "M2_HOME = ${M2_HOME}"
+                '''
             }
         }
-            stage('Build'){
-                steps{
-		sh 'mvn -version'
+        stage('Checkout') {
+            steps{
+                git credentialsId: 'bhavani', url: 'https://github.com/pathuribhavani/hello-world'
+                
+            }
+        }
+	stage('Build'){
+            steps{
+                sh 'mvn -version'
                 sh 'mvn clean install'
                 sh 'cp /var/lib/jenkins/workspace/jenkins/webapp/target/webapp.war'
                 sh 'git remote set-url origin git@https://github.com/pathuribhavani/hello-world.git'
                 sh 'git add .'
                 sh 'git commit -m "Jenkinsfile"'
                 sh 'git push origin HEAD:master'
-		}
+                }
             }
-	     
-
+	}
+	
 }
-
-}
-
