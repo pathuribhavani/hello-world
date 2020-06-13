@@ -32,13 +32,12 @@ pipeline{
             }
 	stage('Docker Image') {
 	         steps{
-                  script{
-	        sh 'BUILD_NUMBER="bhavanipathuri/webfile:1234"'
-	        docker build -t .
+                  def myImg
+	          myImg = docker.build 'bhavanipathuri/webfile:1234'
                     
     }
 	}
        }	
 
 }
-}
+
