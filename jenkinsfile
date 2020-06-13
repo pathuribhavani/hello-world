@@ -27,7 +27,6 @@ pipeline{
             steps{
                 sh 'mvn -version'
                 sh 'mvn clean install'
-                sh 'cp /var/lib/jenkins/workspace/jenkins/webapp/target/webapp.war'
                 sh 'git remote set-url origin git@https://github.com/pathuribhavani/hello-world.git'
                 sh 'git add .'
                 sh 'git commit -m "Jenkinsfile"'
