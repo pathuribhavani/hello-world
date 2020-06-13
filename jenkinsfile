@@ -37,8 +37,8 @@ pipeline{
         echo 'Starting to build docker image'
 
                 script {
-                    def customImage = docker.build("my-image:${env.56d2126514aa}")
-                    customImage.push()
+                    docker.build registry + ":$123"
+                    
     }
 	}
 	
