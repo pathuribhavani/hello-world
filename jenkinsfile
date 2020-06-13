@@ -1,6 +1,9 @@
 pipeline{
     agent any
-
+    tools{
+    registry = "https://hub.docker.com/repository/docker/bhavanipathuri/webfile"
+    registryCredential = ‘dockerhub’
+    }
     tools{
         maven 'M2_HOME'
         jdk '$JAVA_HOME'
@@ -31,6 +34,12 @@ pipeline{
                 sh 'git push origin HEAD:master'
                 }
             }
+	stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+
+        app = docker.build("bhavanipathuri/project:1234")
+    }
 	}
 	
 
