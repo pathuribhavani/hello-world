@@ -1,8 +1,10 @@
 pipeline{
     agent any
-    tools{
+    environment{
     registry = "https://hub.docker.com/repository/docker/bhavanipathuri/webfile"
-    registryCredential = ‘dockerhub'
+    registryCredential = 'dockerhub'
+    }
+        tools{
         maven 'M2_HOME'
         jdk '$JAVA_HOME'
         }
