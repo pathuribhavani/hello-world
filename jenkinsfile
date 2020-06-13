@@ -34,9 +34,7 @@ pipeline{
                 }
             }
 	stage('Docker Image') {
-        echo 'Starting to build docker image'
-
-                script {
+	         steps{
                     docker.build registry + ":${123}"
                     
     }
