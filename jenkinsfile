@@ -34,11 +34,11 @@ pipeline{
                 }
             }
 	stage('Docker Image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
+        echo 'Starting to build docker image'
 
-        app = docker.build("bhavanipathuri/project:1234")
-	app.push()
+                script {
+                    def customImage = docker.build("my-image:${env.56d2126514aa}")
+                    customImage.push()
     }
 	}
 	
