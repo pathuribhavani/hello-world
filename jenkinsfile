@@ -33,7 +33,7 @@ pipeline{
 	stage('Docker Image') {
 	         steps{
                   script{
-	        docker.build registry + "${bhavanipathuri/webfile:1234}"
+	        docker.build registry + ":$BUILD_NUMBER"
                     
     }
 	}
