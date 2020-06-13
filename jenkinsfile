@@ -27,10 +27,7 @@ pipeline{
             steps{
                 sh 'mvn -version'
                 sh 'mvn clean install'
-                sh 'git remote set-url origin git@https://github.com/pathuribhavani/hello-world.git'
-                sh 'git add .'
-                sh 'git commit -m "Jenkinsfile"'
-                sh 'git push origin HEAD:master'
+                
                 }
             }
 	stage('Docker Image') {
