@@ -1,8 +1,5 @@
 pipeline{
     agent any
-	docker {
-	    image 'bhavanipathuri/webfile:1234'
-}
     environment{
     registry = "https://hub.docker.com/repository/docker/bhavanipathuri/webfile"
     registryCredential = 'dockerhub'
@@ -10,6 +7,7 @@ pipeline{
         tools{
         maven 'M2_HOME'
         jdk '$JAVA_HOME'
+        org.jenkinsci.plugins.docker.commons.tools.DockerTool 'docker'
         }
         stages{
             stage('Initialize'){
@@ -35,8 +33,9 @@ pipeline{
             }
 	stage('Docker Image') {
 	         steps{
-                  
-	          def myImg = docker.build 'bhavanipathuri/webfile:1234'
+                  script {
+                docker.build registry + ":$BUILD_NUMBER"
+        }
                     
     }
 	}
