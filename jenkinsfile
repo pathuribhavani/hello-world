@@ -35,7 +35,8 @@ pipeline{
             }
 	stage('Docker Image') {
 	         steps{
-                    docker.build registry + ":${123}"
+                    
+                  sh 'docker.build registry + ":${123}"'
                     
     }
 	}
