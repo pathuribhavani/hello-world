@@ -32,8 +32,8 @@ pipeline{
             }
 	stage('Docker Image') {
 	         steps{
-                    
-                  sh 'docker build -t bhavanipathuri/project:1234'
+                  script{
+	        docker.build registry + ":$123"
                     
     }
 	}
