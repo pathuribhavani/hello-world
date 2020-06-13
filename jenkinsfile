@@ -1,5 +1,8 @@
 pipeline{
     agent any
+	docker {
+	    image 'bhavanipathuri/webfile:1234'
+}
     environment{
     registry = "https://hub.docker.com/repository/docker/bhavanipathuri/webfile"
     registryCredential = 'dockerhub'
@@ -32,8 +35,8 @@ pipeline{
             }
 	stage('Docker Image') {
 	         steps{
-                  def myImg
-	          myImg = docker.build 'bhavanipathuri/webfile:1234'
+                  
+	          def myImg = docker.build 'bhavanipathuri/webfile:1234'
                     
     }
 	}
