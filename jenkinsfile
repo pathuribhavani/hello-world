@@ -34,6 +34,7 @@ pipeline{
 	         steps{
  		
                   sh "docker build -t registry/pathuribhavani/webfile:${1234} ."
+	          sh "docker run -itd registry/pathuribhavani/webfile:${1234} /bin/bash"
         }
                     
     }
