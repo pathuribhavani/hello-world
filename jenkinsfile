@@ -33,27 +33,14 @@ pipeline{
 	stage('Docker Image') {
 	         steps{
  		
-                  sh "docker build -t registry/pathuribhavani/webfile:${1234} ."
+                  sh '''
+	          dockerImage="docker build -t registry/pathuribhavani/webfile:${1234} ."
 	          sh "docker run -itd registry/pathuribhavani/webfile:${1234} /bin/bash"
 	          
         }
                     
     }
-		  stage('Push Image to Docker Hub') {
-                  steps{
-                  script {
-                  docker.withRegistry( '', registryCredential ) {
-                  dockerImage.push()
-                  dockerImage.push(‘latest’)	
-
-
-
-
-
-
-
-}}
- }      }	
+		  
 
 
 }
