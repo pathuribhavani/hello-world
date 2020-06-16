@@ -32,10 +32,10 @@ pipeline{
             }
 	stage('Docker Image') {
 	         steps{
-	           script {
-	             dockerImage = docker.build -t registry/pathuribhavani/webfile:1234 .
+	           
+	           sh ' dockerImage = docker.build -t registry/pathuribhavani/webfile:1234 . '
 	          
-        }
+        
                     
     }
 		  }
