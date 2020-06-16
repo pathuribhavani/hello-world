@@ -30,28 +30,7 @@ pipeline{
                 
                 }
             }
-	stage('Docker Image') {
-	         steps{
-	           
-	           sh ' dockerImage = docker.build -t registry/pathuribhavani/webfile:1234 . '
-	          
-        
-                    
-    }
-		  }
 
-
-	stage('deploy image') {
-	    steps {
-		script {
-	           docker.withregistry('',registrycredential){
-			dockerImage.push()
-
-}
-}
-
-}
-}
 
 }
 
