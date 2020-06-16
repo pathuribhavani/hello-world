@@ -44,10 +44,10 @@ pipeline{
 	stage('deploy image') {
 	    steps {
 		script {
-	           docker.withregistry('',registrycredential
+	           docker.withregistry('',registrycredential){
 			dockerImage.push()
 
-
+}
 }
 
 }
